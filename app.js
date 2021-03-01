@@ -25,7 +25,7 @@ app.get("/status",(req,res,next) => {
 
 });
 
-app.get("/getMerchatToken", (req, res, next) => {
+app.get("/getMerchantToken", (req, res, next) => {
 	const request = require('request');
 	console.log(fs.readFileSync(certFile));
 	const options = {
@@ -36,7 +36,7 @@ app.get("/getMerchatToken", (req, res, next) => {
 			"merchantIdentifier": "Your merchant Identifier",
             "displayName": "Your merchant store name",
             "initiative": "messaging",
-            "initiativeContext": "https://merchantDomain.com/paymentGateway"	    
+            "initiativeContext": "https://apple-pay-abc.herokuapp.com/paymentGateway"	    
         }
 	};	
 	request.post(options, 
