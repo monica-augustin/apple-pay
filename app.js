@@ -14,7 +14,7 @@ var allowCrossDomain = function(req, res, next) {
 }
 app.use(allowCrossDomain);
 app.use(bodyParser.json());
-app.listen(9981, () => {
+app.listen(process.env.PORT ||9981, () => {
  console.log("Server running on port 9981");
 });
 
