@@ -3,7 +3,7 @@ const request = require('request');
 const fs = require('fs'), 
 	path = require('path'), 
 	bodyParser = require('body-parser');
-	certFile =  path.resolve('/ApplePayCertificates.p12')
+	certFile =  path.resolve('ApplePayCertificates.p12')
 
 var app = express();
 var allowCrossDomain = function(req, res, next) {
