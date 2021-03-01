@@ -3,7 +3,7 @@ const request = require('request');
 const fs = require('fs'), 
 	path = require('path'), 
 	bodyParser = require('body-parser');
-	certFile =  path.resolve('/MerchantID.p12')
+	certFile =  path.resolve('/ApplePayCertificates.p12')
 
 var app = express();
 var allowCrossDomain = function(req, res, next) {
@@ -31,10 +31,10 @@ app.get("/getMerchantToken", (req, res, next) => {
 	const options = {
 	    url: 'https://apple-pay-gateway.apple.com/paymentservices/paymentSession',
 		pfx: fs.readFileSync(certFile),
-	    passphrase: 'sanjith',
+	    passphrase: 'freshchat',
 	    json : {
-			"merchantIdentifier": "Your merchant Identifier",
-            "displayName": "Your merchant store name",
+			"merchantIdentifier": "merchant.abc.pay.freshchat",
+            "displayName": "Monica's enterprises",
             "initiative": "messaging",
             "initiativeContext": "https://apple-pay-abc.herokuapp.com/paymentGateway"	    
         }
