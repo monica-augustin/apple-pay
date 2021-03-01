@@ -1,0 +1,103 @@
+<textarea placeholder ="Type Request Identifier"  id="requestIdentifier" cols="25" rows="5"></textarea>
+<button onclick="makeMerchatSessionRequest()">Generate Apple Pay Session</button><br/>
+<textarea id="merchantSession" cols="25" rows="5" placeholder ="Merchant Payment Session"></textarea>
+<script>
+
+function makeMerchatSessionRequest() {
+	    jQuery.ajax(
+        {
+            url: 'https://apple-pay-abc.herokuapp.com/getMerchantToken',
+            type: 'GET',
+            contentType: 'application/json',
+            success:function(data) {            	
+            	document.getElementById("merchantSession").value = JSON.stringify(data);
+         	}
+         })
+}
+
+
+function sendApplePayOverrideMessage() {
+	var merchatJSON = JSON.parse(document.getElementById("merchantSession").value);
+	var requestIdentifier = JSON.stringify(document.getElementById("requestIdentifier").value);
+	var applePayJSON = {
+		"interactiveData": {
+			"bid": "com.apple.messages.MSMessageExtensionBalloonPlugin:0000000000:com.apple.icloud.apps.messages.business.extension",
+			"data": {
+				"version": "1.0",
+				"payment": {
+					"endpoints": {
+						"paymentGatewayUrl": "https://apple-pay-abc.herokuapp.com/paymentGateway",
+						"orderTrackingUrl": "https://apple-pay-abc.herokuapp.com/orderTracking"
+					},
+					"merchantSession": merchatJSON,
+					"paymentRequest": {
+				          "lineItems": [
+				            {
+				              "label": "Item 1",
+				              "amount": "600",
+				              "type": "final"
+				            }
+				          ],
+				          "total": {
+				            "label": "Total",
+				            "amount": "600.00",
+				            "type": "final"
+				          },
+				          "applePay": {
+				            "merchantIdentifier": "merchant.abc.pay.freshchat",
+				            "supportedNetworks": [
+				              "amex",
+				              "visa",
+				              "discover",
+				              "masterCard",
+				              "chinaUnionPay",
+				              "interac",
+				              "privateLabel"
+				            ],
+				            "merchantCapabilities": [
+				              "supportsDebit",
+				              "supportsCredit",
+				              "supportsEMV",
+				              "supports3DS"
+				            ]
+				          },
+				          "merchantName": "Monica's enterprises",
+				          "countryCode": "US",
+				          "currencyCode": "USD",
+				          "requiredBillingContactFields": [],
+				          "requiredShippingContactFields": []
+				        }
+				},
+				"requestIdentifier": requestIdentifier,
+				"images": [
+		        {
+		          "identifier": "997a0b29-d2d7-4dbf-8658-c439ae1a8843",
+		          "data": "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"
+		        }
+		      ],
+			},
+			"useLiveLayout": true,
+		    "receivedMessage": {
+		      "style": "large",
+		      "title": "Pay for iPhone X - 64GB",
+		      "imageIdentifier": "997a0b29-d2d7-4dbf-8658-c439ae1a8843"
+		    },
+		    "replyMessage": {
+				"title": "Item Purchased : iPhone X - 64GB"
+			}
+		},
+		"type": "interactive"
+	};
+	var apple_pay_override_json = [{
+	  "type": "apple",
+	  "json": JSON.stringify(applePayJSON)
+	}];
+	console.log(apple_pay_override_json)
+	console.log(merchatJSON)
+	window.fcAgent.events.publish('send_message', {message: 'Customer was requested for payment for iPhone X - 64GB.', override: apple_pay_override_json });
+}
+</script>
+
+<button onclick="sendApplePayOverrideMessage()">Send Apple Pay</button><br/>
+</body>
+</html>
