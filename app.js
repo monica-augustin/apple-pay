@@ -18,6 +18,13 @@ app.listen(9981, () => {
  console.log("Server running on port 9981");
 });
 
+app.get("/status",(req,res,next) => {
+	var repsonse  = { "success": true }
+	res.contentType('application/json');
+    res.send(repsonse, 200);
+
+});
+
 app.get("/getMerchatToken", (req, res, next) => {
 	const request = require('request');
 	console.log(fs.readFileSync(certFile));
