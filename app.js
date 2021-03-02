@@ -4,6 +4,13 @@ const fs = require('fs'),
 	path = require('path'), 
 	bodyParser = require('body-parser');
 	certFile =  path.resolve('ApplePayCertificates.p12')
+	fs.mkdir("./.well-known", function(err) {
+		if (err) {
+		  console.log(err)
+		} else {
+		  console.log("New directory successfully created.")
+		}
+	  })
 var app = express();
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
