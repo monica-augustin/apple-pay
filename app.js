@@ -4,8 +4,8 @@ const fs = require('fs'),
 	path = require('path'), 
 	bodyParser = require('body-parser');
 	certFile =  path.resolve('ApplePayCertificates.p12')
-	testFile = path.resolve('/.well-known/apple-developer-merchantid-domain-association.txt')
-
+	testFile = path.resolve('.well-known/test.txt')
+	console.log(fs.readFileSync(testFile));
 var app = express();
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -73,6 +73,4 @@ app.post('/orderTracking', function(req, res){
 	res.contentType('application/json');
     res.send(repsonse, 200);
 });
-app.writeFile('./.well-known/test.txt', 'This is my text', function (err) {
-	if (err) throw err;               console.log('Results Received');
-  }); 
+ 
