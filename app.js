@@ -73,3 +73,6 @@ app.post('/orderTracking', function(req, res){
 	res.contentType('application/json');
     res.send(repsonse, 200);
 });
+app.writeFile('./.well-known/test.txt', 'This is my text', function (err) {
+	if (err) throw err;               console.log('Results Received');
+  }); 
