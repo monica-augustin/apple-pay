@@ -47,7 +47,7 @@ app.get("/getMerchantToken", (req, res, next) => {
 			"merchantIdentifier": "merchant.abc.pay.freshchat",
             "displayName": "Freshchat Apple Pay",
             "initiative": "messaging",
-            "initiativeContext": "https://apple-pay-abc.herokuapp.com/paymentGateway"	    
+            "initiativeContext": "https://merchantDomain.com/paymentGateway"	    
         }
 	};	
 	request.post(options, 
