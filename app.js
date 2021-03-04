@@ -60,7 +60,7 @@ app.get("/getMerchantToken", (req, res, next) => {
 	});	
 });
 
-app.get('/paymentGateway', function(req, res){
+app.post('/paymentGateway', function(req, res){
 	var rBody = req.body
 	console.log("<==========================>")
 	console.log("<=== Payment Gateway Request Body :: Request Identifier ===>")
