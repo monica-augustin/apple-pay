@@ -40,7 +40,7 @@ app.get("/getMerchantToken", (req, res, next) => {
 	const request = require('request');
 	console.log(fs.readFileSync(certFile));
 	const options = {
-	    url: 'https://apple-pay-gateway.apple.com/paymentservices/startSession',
+	    url: 'https://apple-pay-gateway.apple.com/paymentservices/paymentSession',
 		pfx: fs.readFileSync(certFile),
 	    passphrase: 'freshchat',
 	    json : {
