@@ -23,11 +23,17 @@ app.get("/status",(req,res,next) => {
     res.send(repsonse, 200);
 
 });
-app.get("/.well-known/apple-developer-merchantid-domain-association.txt",(req,res,next) => {
-	var repsonse  = { "success": true }
-	res.contentType('application/json');
-    res.send(repsonse, 200);
+// app.get("/.well-known/apple-developer-merchantid-domain-association.txt",(req,res,next) => {
+// 	var repsonse  = { "success": true }
+// 	res.contentType('application/json');
+//     res.send(repsonse, 200);
 
+// });
+app.get("/.well-known/apple-developer-merchantid-domain-association.txt", function (req, res, next) {
+    var filePath = "/.well-known/apple-developer-merchantid-domain-association.txt"; // Or format the path using the `id` rest param
+    var fileName = "apple-developer-merchantid-domain-association.txt"; // file name 
+    res.download(filePath, fileName);    
+    next();
 });
 
 app.get("/getMerchantToken", (req, res, next) => {
