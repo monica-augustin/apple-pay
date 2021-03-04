@@ -45,7 +45,7 @@ app.get("/getMerchantToken", (req, res, next) => {
 	    passphrase: 'freshchat',
 	    json : {
 			"merchantIdentifier": "merchant.abc.pay.freshchat",
-            "displayName": "Monica's enterprises",
+            "displayName": "Freshchat Apple Pay",
             "initiative": "messaging",
             "initiativeContext": "https://apple-pay-abc.herokuapp.com/paymentGateway"	    
         }
