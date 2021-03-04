@@ -30,10 +30,10 @@ app.get("/status",(req,res,next) => {
 
 // });
 app.get("/.well-known/apple-developer-merchantid-domain-association.txt", function (req, res, next) {
-    var filePath = "/.well-known/apple-developer-merchantid-domain-association.txt"; // Or format the path using the `id` rest param
-    var fileName = "apple-developer-merchantid-domain-association.txt"; // file name 
-    res.download(filePath, fileName);    
-    next();
+    // var filePath = "/.well-known/apple-developer-merchantid-domain-association.txt"; // Or format the path using the `id` rest param
+	// var fileName = "apple-developer-merchantid-domain-association.txt"; // file name 
+	var file = '/.well-known/apple-developer-merchantid-domain-association.txt';
+    res.download(file);   
 });
 
 app.get("/getMerchantToken", (req, res, next) => {
