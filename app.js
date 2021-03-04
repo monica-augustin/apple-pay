@@ -23,7 +23,7 @@ app.get("/status",(req,res,next) => {
     res.send(repsonse, 200);
 
 });
-app.get("/.well-known",(req,res,next) => {
+app.get("/.well-known/apple-developer-merchantid-domain-association.txt",(req,res,next) => {
 	var repsonse  = { "success": true }
 	res.contentType('application/json');
     res.send(repsonse, 200);
