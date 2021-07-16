@@ -6,7 +6,7 @@
 function makeMerchatSessionRequest() {
 	    jQuery.ajax(
         {
-            url: 'https://apple-pay-abc.herokuapp.com/getMerchantToken',
+            url: 'https://apple-pay-new.herokuapp.com/getMerchantToken',
             type: 'GET',
             contentType: 'application/json',
             success:function(data) {            	
@@ -26,8 +26,8 @@ function sendApplePayOverrideMessage() {
 				"version": "1.0",
 				"payment": {
 					"endpoints": {
-						"paymentGatewayUrl": "https://apple-pay-abc.herokuapp.com/paymentGateway",
-						"orderTrackingUrl": "https://apple-pay-abc.herokuapp.com/orderTracking"
+						"paymentGatewayUrl": "https://apple-pay-new.herokuapp.com/paymentGateway",
+						"orderTrackingUrl": "https://apple-pay-new.herokuapp.com/orderTracking"
 					},
 					"merchantSession": merchatJSON,
 					"paymentRequest": {
