@@ -34,7 +34,7 @@ app.get("/getMerchantToken", (req, res, next) => {
 	const options = {
 	    url: 'https://apple-pay-gateway.apple.com/paymentservices/paymentSession',
 		pfx: fs.readFileSync(certFile),
-	    passphrase: 'freshchat',
+	    passphrase: '',
 	    json : {
 			"merchantIdentifier": "merchant.abc.pay.freshchat",
             "displayName": "Freshchat Apple Pay",
